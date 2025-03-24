@@ -1,21 +1,22 @@
 package org.example.mywebapp;
 import java.io.*;
 
-import com.bromel.ejb.HelloRemote;
+import com.bromel.ejb.TestBean;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+
+@WebServlet("/test")
 public class TestServlet extends HttpServlet {
+
     @EJB
-    private HelloRemote myBean;
+    private TestBean testBean;
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String result = myBean.sayHello("User");
-        response.getWriter().println("EJB Result: " + result);
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String dbTime = testBean.testQuery();
+        resp.getWriter().write(dbTime);
     }
 }
