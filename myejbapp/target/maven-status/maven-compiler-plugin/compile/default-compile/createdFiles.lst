@@ -1,2 +1,7 @@
-com\bromel\ejb\HelloBean.class
+com\bromel\ejb\utils\PasswordUtil.class
 com\bromel\ejb\HelloRemote.class
+com\bromel\ejb\TestBean.class
+com\bromel\ejb\startup\StartupBean.class
+com\bromel\ejb\entities\User.class
+com\bromel\ejb\HelloBean.class
+com\bromel\ejb\service\UserService.class

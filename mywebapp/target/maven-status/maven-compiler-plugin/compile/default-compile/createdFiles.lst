@@ -1,1 +1,4 @@
+org\example\mywebapp\controller\LogoutServlet.class
+org\example\mywebapp\controller\LoginServlet.class
 org\example\mywebapp\TestServlet.class
+org\example\mywebapp\controller\HomeServlet.class
