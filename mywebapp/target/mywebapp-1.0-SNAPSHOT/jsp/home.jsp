@@ -60,7 +60,16 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/cart">Giỏ hàng</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/order-history">Lịch sử đơn hàng</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn btn-danger text-white" href="${pageContext.request.contextPath}/logout">Đăng xuất</a>
+                </li>
+                <%
+                    } else{
+                %>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-primary" href="${pageContext.request.contextPath}/login">Đăng nhập</a>
                 </li>
                 <%
                     }

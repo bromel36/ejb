@@ -30,10 +30,6 @@
                 <input type="radio" id="cod" name="paymentMethod" value="COD" checked>
                 <label for="cod">Thanh toán khi nhận hàng (COD)</label>
             </div>
-            <div>
-                <input type="radio" id="vnpay" name="paymentMethod" value="VNPAY">
-                <label for="vnpay">Thanh toán qua VNPay</label>
-            </div>
         </div>
         <div class="text-end">
             <button type="submit" class="btn btn-success">Xác nhận đơn hàng</button>

@@ -33,6 +33,9 @@
                     if (sessionUser != null && sessionUser.getAttribute("user") != null) {
                 %>
                 <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/order-history">Lịch sử đơn hàng</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn btn-danger text-white" href="${pageContext.request.contextPath}/logout">Đăng
                         xuất</a>
                 </li>
@@ -46,6 +49,9 @@
 
 <div class="container my-5">
     <h1 class="text-center mb-4">Giỏ Hàng</h1>
+    <c:if test="${not empty error}">
+        <div class="alert alert-danger">${error}</div>
+    </c:if>
     <c:if test="${empty cart.items}">
         <p class="text-center">Giỏ hàng của bạn đang trống.</p>
     </c:if>
@@ -65,7 +71,14 @@
                 <tr>
                     <td>${item.book.title}</td>
                     <td>${item.book.price} VNĐ</td>
-                    <td>${item.quantity}</td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/cart" method="get" class="d-inline">
+                            <input type="hidden" name="action" value="update">
+                            <input type="hidden" name="bookId" value="${item.book.id}">
+                            <input type="number" name="quantity" value="${item.quantity}" min="1" class="form-control d-inline" style="width: 80px;">
+                            <button type="submit" class="btn btn-sm btn-primary">Cập nhật</button>
+                        </form>
+                    </td>
                     <td>${item.subtotal} VNĐ</td>
                     <td>
                         <a href="${pageContext.request.contextPath}/cart?action=remove&bookId=${item.book.id}"

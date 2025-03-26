@@ -1,19 +1,24 @@
 package org.example.mywebapp.controller;
 
 
-
 import com.bromel.ejb.model.Cart;
 import com.bromel.ejb.model.ShippingInfo;
+import com.bromel.ejb.service.OrderService;
+import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 @WebServlet("/checkout")
 public class CheckoutServlet extends HttpServlet {
+
+    @EJB
+    private OrderService orderService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -34,17 +39,11 @@ public class CheckoutServlet extends HttpServlet {
         String name = request.getParameter("name");
         String address = request.getParameter("address");
         String phone = request.getParameter("phone");
-        String paymentMethod = request.getParameter("paymentMethod");
 
-        // Lưu thông tin giao hàng vào session để sử dụng sau
         session.setAttribute("shippingInfo", new ShippingInfo(name, address, phone));
 
-        if ("COD".equals(paymentMethod)) {
-            // Chuyển hướng đến servlet xử lý COD
-            response.sendRedirect(request.getContextPath() + "/order?method=cod");
-        } else if ("VNPAY".equals(paymentMethod)) {
-            // Chuyển hướng đến servlet xử lý VNPay
-            response.sendRedirect(request.getContextPath() + "/order?method=vnpay");
-        }
+        response.sendRedirect(request.getContextPath() + "/order?method=cod");
     }
+
+
 }
